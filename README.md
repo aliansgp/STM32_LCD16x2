@@ -37,7 +37,7 @@ In this step, `char` is 4 bit, so we send it by set our 4 Data Pin<sub>(D4-D7)</
 After that we set E_Pin, 1, to say to LCD that we sending data, read the pins! and give LCD some time, then set E_Pin to 0.
 
 ### LCD_send_string(char *str) :
-This function give a string, select characters and send them to LCD_send_data function.
+This function get a string, select string characters and send them to LCD_send_data function.
 
 ### LCD_cur(int row, int col) :
 Select curser location with command.<sub>(READ datasheet to know how it works)</sub>
