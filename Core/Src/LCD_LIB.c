@@ -12,8 +12,10 @@ extern TIM_HandleTypeDef timer;
 
 
 void LCD_delay(uint32_t us){
-	  __HAL_TIM_SET_COUNTER(&htim1, 0);
-	  while (__HAL_TIM_GET_COUNTER(&htim1) < us);
+	HAL_TIM_Base_Start(&htim1);
+	htim1.Instance->CNT=0;
+	while(htim1.Instance->CNT <value);
+
 }
 
 
