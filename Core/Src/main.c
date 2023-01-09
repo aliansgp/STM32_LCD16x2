@@ -113,13 +113,7 @@ int main(void)
   {
     /* USER CODE END WHILE */
     MX_USB_HOST_Process();
-//    for (int i = 0;  i < 99; i++) {
-//    	char str[16];
-//    	sprintf(str, "slm: %d", i);
-//    	LCD_send_string(str);
-//    	HAL_Delay(500);
-//
-//	}
+
     /* USER CODE BEGIN 3 */
 
 
