@@ -29,23 +29,23 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  12 .ARM.attributes 00000030  00000000  00000000  00020090  2**0
                   CONTENTS, READONLY
- 13 .debug_info   0001b664  00000000  00000000  000200c0  2**0
+ 13 .debug_info   0001b66e  00000000  00000000  000200c0  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_abbrev 000044de  00000000  00000000  0003b724  2**0
+ 14 .debug_abbrev 000044f7  00000000  00000000  0003b72e  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_aranges 00001730  00000000  00000000  0003fc08  2**3
+ 15 .debug_aranges 00001730  00000000  00000000  0003fc28  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_ranges 00001540  00000000  00000000  00041338  2**3
+ 16 .debug_ranges 00001540  00000000  00000000  00041358  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_macro  000253f9  00000000  00000000  00042878  2**0
+ 17 .debug_macro  00025fad  00000000  00000000  00042898  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_line   0001f383  00000000  00000000  00067c71  2**0
+ 18 .debug_line   0001f56c  00000000  00000000  00068845  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .debug_str    000d3d58  00000000  00000000  00086ff4  2**0
+ 19 .debug_str    000d3d68  00000000  00000000  00087db1  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 20 .comment      00000050  00000000  00000000  0015ad4c  2**0
+ 20 .comment      00000050  00000000  00000000  0015bb19  2**0
                   CONTENTS, READONLY
- 21 .debug_frame  000064b0  00000000  00000000  0015ad9c  2**2
+ 21 .debug_frame  000064ac  00000000  00000000  0015bb6c  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -413,8 +413,8 @@ Disassembly of section .text:
  8000572:	bf00      	nop
 
 08000574 <LCD_init>:
-	  __HAL_TIM_SET_COUNTER(&htim1, 0);
-	  while (__HAL_TIM_GET_COUNTER(&htim1) < us);
+	while(htim1.Instance->CNT < us);
+
 }
 
 
@@ -2199,7 +2199,7 @@ void MX_TIM1_Init(void)
  8000f2c:	4b1e      	ldr	r3, [pc, #120]	; (8000fa8 <MX_TIM1_Init+0x98>)
  8000f2e:	4a1f      	ldr	r2, [pc, #124]	; (8000fac <MX_TIM1_Init+0x9c>)
  8000f30:	601a      	str	r2, [r3, #0]
-  htim1.Init.Prescaler = 168-1;
+  htim1.Init.Prescaler = 167;
  8000f32:	4b1d      	ldr	r3, [pc, #116]	; (8000fa8 <MX_TIM1_Init+0x98>)
  8000f34:	22a7      	movs	r2, #167	; 0xa7
  8000f36:	605a      	str	r2, [r3, #4]
@@ -2207,9 +2207,9 @@ void MX_TIM1_Init(void)
  8000f38:	4b1b      	ldr	r3, [pc, #108]	; (8000fa8 <MX_TIM1_Init+0x98>)
  8000f3a:	2200      	movs	r2, #0
  8000f3c:	609a      	str	r2, [r3, #8]
-  htim1.Init.Period = 0xffff - 1;
+  htim1.Init.Period = 65535;
  8000f3e:	4b1a      	ldr	r3, [pc, #104]	; (8000fa8 <MX_TIM1_Init+0x98>)
- 8000f40:	f64f 72fe 	movw	r2, #65534	; 0xfffe
+ 8000f40:	f64f 72ff 	movw	r2, #65535	; 0xffff
  8000f44:	60da      	str	r2, [r3, #12]
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
  8000f46:	4b18      	ldr	r3, [pc, #96]	; (8000fa8 <MX_TIM1_Init+0x98>)
@@ -2219,9 +2219,9 @@ void MX_TIM1_Init(void)
  8000f4c:	4b16      	ldr	r3, [pc, #88]	; (8000fa8 <MX_TIM1_Init+0x98>)
  8000f4e:	2200      	movs	r2, #0
  8000f50:	615a      	str	r2, [r3, #20]
-  htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
  8000f52:	4b15      	ldr	r3, [pc, #84]	; (8000fa8 <MX_TIM1_Init+0x98>)
- 8000f54:	2280      	movs	r2, #128	; 0x80
+ 8000f54:	2200      	movs	r2, #0
  8000f56:	619a      	str	r2, [r3, #24]
   if (HAL_TIM_Base_Init(&htim1) != HAL_OK)
  8000f58:	4813      	ldr	r0, [pc, #76]	; (8000fa8 <MX_TIM1_Init+0x98>)

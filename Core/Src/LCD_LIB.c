@@ -14,7 +14,7 @@ extern TIM_HandleTypeDef timer;
 void LCD_delay(uint32_t us){
 	HAL_TIM_Base_Start(&htim1);
 	htim1.Instance->CNT=0;
-	while(htim1.Instance->CNT <value);
+	while(htim1.Instance->CNT < us);
 
 }
 
