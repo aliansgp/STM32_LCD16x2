@@ -99,11 +99,12 @@ int main(void)
   MX_USB_HOST_Init();
   /* USER CODE BEGIN 2 */
   LCD_init();
-  LCD_cur(0,0);
   LCD_cls();
+//  LCD_cur(1,0);
+  //LCD_send_string("hello world!");
   //char str[16];
   //sprintf(str, "%d", 44);
-  LCD_send_string("str");
+  //LCD_send_string("hello world!");
 
 
   /* USER CODE END 2 */
@@ -114,7 +115,13 @@ int main(void)
   {
     /* USER CODE END WHILE */
     MX_USB_HOST_Process();
-
+    LCD_cur(0,0);
+    char str[16];
+    sprintf(str, "Hello World!%d", 2023);
+    LCD_send_string(str);
+    HAL_Delay(500);
+    LCD_cls();
+    HAL_Delay(500);
     /* USER CODE BEGIN 3 */
 
 
