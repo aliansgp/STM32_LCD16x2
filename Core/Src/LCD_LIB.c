@@ -22,15 +22,15 @@ void LCD_delay(uint32_t us){
 void LCD_init(){
 
 	LCD_send_cmd(0x02);		// To initialize LCD in 4-bit mode.
-	HAL_Delay(1);
+	HAL_Delay(3);
 	LCD_send_cmd(0x28);		// To initialize LCD in 2 lines, 5x7 dots and 4bit mode.
-	HAL_Delay(1);
+	HAL_Delay(2);
 	LCD_send_cmd(0x0C);
-	HAL_Delay(1);
+	HAL_Delay(2);
 	LCD_send_cmd(0x06);
-	HAL_Delay(1);
+	HAL_Delay(2);
 	LCD_send_cmd(0x80);
-	HAL_Delay(1);
+	HAL_Delay(2);
 
 //    HAL_GPIO_WritePin(GPIOE, RS_Pin, GPIO_PIN_RESET);
 //    HAL_GPIO_WritePin(GPIOE, E_Pin, GPIO_PIN_RESET);
@@ -89,8 +89,8 @@ void LCD_send(char data, int rs){
     /*--working:
      *  HAL_Delay(4);
      */
-    HAL_Delay(20);
-    //LCD_delay(4000000);
+    //HAL_Delay(1);
+    LCD_delay(80);
     HAL_GPIO_WritePin(GPIOE, E_Pin, 0);
     //LCD_delay(0);
 }
@@ -119,7 +119,9 @@ void LCD_cur(int row, int col){
 
 void LCD_cls(){
 	//LCD_send_cmd(0x00);
-	LCD_send_cmd(0x01);
-	HAL_Delay(2);
+	LCD_cur(0, 0);
+	LCD_send_string("                ");
+	LCD_cur(1, 0);
+	LCD_send_string("                ");
 }
 
