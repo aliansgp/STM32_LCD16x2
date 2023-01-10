@@ -101,9 +101,9 @@ int main(void)
   LCD_init();
   LCD_cur(0,0);
   LCD_cls();
-  char str[16];
-  sprintf(str, "number: %d", 25641);
-  LCD_send_string(str);
+  //char str[16];
+  //sprintf(str, "%d", 44);
+  LCD_send_string("str");
 
 
   /* USER CODE END 2 */

@@ -89,7 +89,7 @@ void LCD_send(char data, int rs){
     /*--working:
      *  HAL_Delay(4);
      */
-    HAL_Delay(4);
+    HAL_Delay(20);
     //LCD_delay(4000000);
     HAL_GPIO_WritePin(GPIOE, E_Pin, 0);
     //LCD_delay(0);
@@ -120,6 +120,6 @@ void LCD_cur(int row, int col){
 void LCD_cls(){
 	//LCD_send_cmd(0x00);
 	LCD_send_cmd(0x01);
-	HAL_Delay(1);
+	HAL_Delay(2);
 }
 
