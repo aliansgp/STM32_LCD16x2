@@ -115,6 +115,9 @@ int main(void)
   {
     /* USER CODE END WHILE */
     MX_USB_HOST_Process();
+
+    /* USER CODE BEGIN 3 */
+
     LCD_cur(0,0);
     char str[16];
     sprintf(str, "Hello World!%d", 2023);
@@ -122,9 +125,6 @@ int main(void)
     HAL_Delay(500);
     LCD_cls();
     HAL_Delay(500);
-    /* USER CODE BEGIN 3 */
-
-
 
   }
   /* USER CODE END 3 */

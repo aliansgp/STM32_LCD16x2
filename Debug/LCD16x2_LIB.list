@@ -1506,6 +1506,9 @@ int main(void)
     /* USER CODE END WHILE */
     MX_USB_HOST_Process();
  8000c0a:	f007 f913 	bl	8007e34 <MX_USB_HOST_Process>
+
+    /* USER CODE BEGIN 3 */
+
     LCD_cur(0,0);
  8000c0e:	2100      	movs	r1, #0
  8000c10:	2000      	movs	r0, #0
