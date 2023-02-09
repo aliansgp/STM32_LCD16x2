@@ -1,5 +1,11 @@
 # LCD16x2 STM32F4xx
-Drive LCD 16x2 with 4pin, Without I2C 
+Drive LCD 16x2 with 4pin, Without I2C on STM32F407VG discovery board but you can use it for other microcontrollers.
+
+**attention:** some unused peripheral are modified.
+
+**ALL YOU NEED IS THIS TWO PERIPHERALS:**
+* Timer (I wrote it for TIM1 with this [settings](https://github.com/aliansgp/STM32_Micro_Second_Delay).)
+* GPIO
 
 #### ports:
 All pins are set on GPIOE:
